@@ -1,3 +1,5 @@
+// leet code problem no - 26 - Remove duplicates from sorted array
+
 function removeDuplicates(arr) {
 
     let count = 0;
