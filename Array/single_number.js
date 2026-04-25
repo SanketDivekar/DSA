@@ -1,19 +1,26 @@
 // Leetcode problem no - 136 - Single Number
 function findSingleNumber(arr) {
-  let hash = {};
-  for (let i = 0; i < arr.length; i++) {
-    if (!hash[arr[i]]) {
-      hash[arr[i]] = 1;
-    } else {
-      hash[arr[i]]++;
-    }
-  }
+  // let hash = {};
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (!hash[arr[i]]) {
+  //     hash[arr[i]] = 1;
+  //   } else {
+  //     hash[arr[i]]++;
+  //   }
+  // }
 
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (hash[arr[i]] == 1) {
+  //     return arr[i];
+  //   }
+  // }
+
+  // Alternate method to solve this proble using XOR bitwise operator
+  let singleNumber = 0;
   for (let i = 0; i < arr.length; i++) {
-    if (hash[arr[i]] == 1) {
-      return arr[i];
-    }
+    singleNumber = singleNumber ^ arr[i];
   }
+  return singleNumber;
 }
 
 const res = findSingleNumber([4, 1, 2, 1, 2]);
