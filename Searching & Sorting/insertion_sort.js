@@ -1,4 +1,4 @@
-// code to sort given unsorted array using insertion sort.
+// Code to sort given unsorted array using insertion sort.
 
 function sortArray(arr) {
   for (let i = 1; i < arr.length; i++) {
