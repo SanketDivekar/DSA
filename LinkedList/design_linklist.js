@@ -73,6 +73,37 @@ function addElementAtIndex(index, val) {
   list.size += 1;
 }
 
+// function to get element at index
+function getElement(index) {
+  idx = index;
+  if (index < 0 || index >= list.size) {
+    return -1;
+  } else {
+    let curr = list.head;
+    for (let i = 0; i < index; i++) {
+      curr = curr.next;
+    }
+    return curr.val;
+  }
+}
+
+// function to delete an element at index
+function deleteElement(index) {
+  idx = index;
+  if (index < 0 || index >= list.size) {
+    return;
+  } else if (index == 0) {
+    list.head = list.head.next;
+  } else {
+    let curr = list.head;
+    for (let i = 0; i < index - 1; i++) {
+      curr = curr.next;
+    }
+    curr.next = curr.next.next;
+  }
+  list.size -= 1;
+}
+
 // create nodes for list
 const nodeOne = new CreateNode(10);
 const nodeTwo = new CreateNode(20);
@@ -134,6 +165,23 @@ addElementAtIndex(3, 33);
 current = list.head;
 console.log(
   "\nLinked list contains below values after adding element before index",
+  idx,
+  "and size of list is: ",
+  list.size,
+);
+
+while (current) {
+  console.log(current.val);
+  current = current.next;
+}
+
+const listElement = getElement(4);
+console.log("\nElement at index", idx, "is :", listElement);
+
+deleteElement(5);
+current = list.head;
+console.log(
+  "\nLinked list contains below values after deleting element at index",
   idx,
   "and size of list is: ",
   list.size,
