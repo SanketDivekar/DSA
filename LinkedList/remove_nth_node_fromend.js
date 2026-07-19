@@ -38,30 +38,52 @@ nodeSix.next = nodeSeven;
 list.head = nodeOne;
 
 function removeNthFromEnd(head, idx) {
+  // One pass solution -
   sentinelNode.next = head;
-  let lengthOfList = 0;
-  // Find length of linkedlist
-  while (head) {
-    head = head.next;
-    lengthOfList++;
+
+  // create first pointer and point it to idx/n th node.
+  let first = sentinelNode;
+  for (let i = 0; i < idx; i++) {
+    first = first.next;
   }
 
-  // Find one position before the given index (find prev node).
-  let prevNodeIndex = lengthOfList - idx;
+  // create second pointer and point it to sentinel node.
+  let second = sentinelNode;
 
-  // create a pointer variable which will track prev node and initially assigned to sentinel node.
-  let prev = sentinelNode;
-
-  // move prev to next untill it reaches the one position before the given index.
-  for (let i = 0; i < prevNodeIndex; i++) {
-    prev = prev.next;
+  // move both the pointer one step ahead.
+  while (first.next != null) {
+    first = first.next;
+    second = second.next;
   }
 
-  // point prev.next = prev.next.next to remove linking of prev.next
-  prev.next = prev.next.next;
-
-  // return head of the list as sentinel node always points to head of list.
+  second.next = second.next.next;
   return sentinelNode.next;
+
+  // Below solution requires two passes to solve the problem.
+  // sentinelNode.next = head;
+  // let lengthOfList = 0;
+  // // Find length of linkedlist
+  // while (head) {
+  //   head = head.next;
+  //   lengthOfList++;
+  // }
+
+  // // Find one position before the given index (find prev node).
+  // let prevNodeIndex = lengthOfList - idx;
+
+  // // create a pointer variable which will track prev node and initially assigned to sentinel node.
+  // let prev = sentinelNode;
+
+  // // move prev to next untill it reaches the one position before the given index.
+  // for (let i = 0; i < prevNodeIndex; i++) {
+  //   prev = prev.next;
+  // }
+
+  // // point prev.next = prev.next.next to remove linking of prev.next
+  // prev.next = prev.next.next;
+
+  // // return head of the list as sentinel node always points to head of list.
+  // return sentinelNode.next;
 }
 
 console.log("List before deletion - ");
